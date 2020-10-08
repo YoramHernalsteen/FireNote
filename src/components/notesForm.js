@@ -3,8 +3,8 @@ import styled from "@emotion/styled";
 import uuid from "react-uuid";
 const NoteForm = styled.form`
   display: block;
-  width: 80%;
-  margin: auto;
+  width: 50%;
+  margin-left: 30%;
 `;
 
 const FormGroup = styled.div `
