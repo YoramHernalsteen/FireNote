@@ -1,9 +1,10 @@
 import React from "react";
 import styled from "@emotion/styled";
+import logo from "../images/logo_note.png"
 
 const StyledNav = styled.div`
-    height: 64px;
-    background-color: #223843;
+    height: 100px;
+    background-color: limegreen;
     color: white;
     padding: 0.8em 0;
     position: fixed;
@@ -18,11 +19,15 @@ const StyledLinkNav = styled.a`
     padding: 3em;
     font-size: 2em;
 `;
+const StyledLogo = styled.img`
+    max-height: 100px;
+    max-width: 200px;
+`;
 
 export function Navigation(){
     return <>
             <StyledNav>
-                <StyledLinkNav href="#">NOTE</StyledLinkNav>
+                <StyledLinkNav href="#"><StyledLogo src={logo} alt=""/></StyledLinkNav>
                 </StyledNav>
         </>
 }

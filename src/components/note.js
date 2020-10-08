@@ -3,26 +3,38 @@ import styled from "@emotion/styled";
 
 
 const NoteItem = styled.div`
-   background-color: #f0c806;
+   background-color: #fcefef;
    border-radius: 8px;
-   width: 280px;
+   border: solid black 2px;
+   width: 350px;
    margin: 0 10px 20px;
    box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.2);
    transition: all 0.5s;
-   font-family: "Baskerville Old Face", cursive;
 `;
+
+const Title=styled.h2`
+    text-align: center;
+    text-decoration: black;
+    text-decoration-line: underline;
+`;
+
+const Text=styled.p`
+  margin-left: 1em;
+  padding: 2em;
+`;
+
 
 function NoteTitle(props) {
     const {title} = props;
     return <>
-        <h2>{title}</h2>
+        <Title>{title}</Title>
     </>
 }
 
 function NoteText(props) {
     const {text} = props;
     return <>
-        <p>{text}</p>
+        <Text>{text}</Text>
     </>
 }
 

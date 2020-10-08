@@ -5,12 +5,13 @@ import {Note} from "./note";
 
 const H1_Notes = styled.h1`
     display: block;
-    margin-top: 5%;
-    margin-left: 20%;
+    margin-top: 3%;
+    margin-left: 10%;
 `;
 const StyledList = styled.div`
     display: flex;
     flex-wrap: wrap;
+    margin-left: 10%;
 `;
 
 export function Notes_list(props){

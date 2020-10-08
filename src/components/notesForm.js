@@ -2,9 +2,20 @@ import React, {useState} from "react";
 import styled from "@emotion/styled";
 import uuid from "react-uuid";
 const NoteForm = styled.form`
-  display: block;
-  width: 50%;
-  margin-left: 30%;
+  width: 25%;
+  margin-left:10%;
+  display:${(props)=>props.open? "block": "none"};
+  
+`;
+
+const StyledH2 = styled.button`
+  margin-top: 10%;
+  margin-left: 10%;
+  padding: 1em;
+  background-color: #07004d;
+  color: white;
+  font-size: 1.25em;
+  border-radius: 8px;
 `;
 
 const FormGroup = styled.div `
@@ -13,9 +24,21 @@ const FormGroup = styled.div `
 `;
 
 const ButtonStyled = styled.button`
+    margin-top: 1em;
     padding: 1em;
-    background-color: black;
+    background-color: #07004d;
     color: white;
+    font-size: 1.25em;
+    border-radius: 8px;
+`;
+
+const LabelStyled = styled.label`
+  margin-top: 1em ;
+  font-size: 1.25em;
+`;
+
+const TextAreaStyled = styled.textarea`
+    height: 100px;
 `;
 
 export function NotesForm(props){
@@ -25,6 +48,7 @@ export function NotesForm(props){
         title: "",
         text: ""
     });
+    const[open, setOpen] = useState(false);
     function handleTitleChange(e){
         setNote({...note, title:e.target.value});
 
@@ -41,17 +65,17 @@ export function NotesForm(props){
 
     }
     return <>
-        <h2>Create new note</h2>
-        <NoteForm onSubmit={handleSubmit}>
+        <StyledH2 onClick={()=>setOpen(true)}>Create new note</StyledH2>
+        <NoteForm onSubmit={handleSubmit} open={open}>
             <FormGroup>
-                <label htmlFor="notesform_title">TITLE</label>
+                <LabelStyled htmlFor="notesform_title">TITLE</LabelStyled>
                 <input type="text" id="notesform_title" name="notesform_title" onChange={handleTitleChange} value={note.title}/>
             </FormGroup>
             <FormGroup>
-                <label htmlFor="notesform_note">NOTE</label>
-                <textarea id="notesform_note" name="notesform_note" onChange={handleTextChange} value={note.text} />
+                <LabelStyled htmlFor="notesform_note">NOTE</LabelStyled>
+                <TextAreaStyled id="notesform_note" name="notesform_note" onChange={handleTextChange} value={note.text} />
             </FormGroup>
-            <ButtonStyled type="submit">Create note</ButtonStyled>
+            <ButtonStyled type="submit" onClick={()=>setOpen(false)}>Create note</ButtonStyled>
         </NoteForm>
 
         </>
