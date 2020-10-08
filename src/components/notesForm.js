@@ -9,7 +9,7 @@ const NoteForm = styled.form`
 `;
 
 const StyledH2 = styled.button`
-  margin-top: 7em;
+  margin-top: 9em;
   margin-left: 10%;
   padding: 1em;
   background-color: #07004d;
