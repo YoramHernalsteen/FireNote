@@ -1,11 +1,18 @@
-import React from 'react';
+import React, {useState} from 'react';
+import firebase from "firebase";
 import './App.css';
 import {Navigation} from "./components/navigation";
+import {NotesForm} from "./components/notesForm";
+import {Notes_list} from "./components/notes_list";
 
 function App() {
+    const[notes, setNotes] = useState([]);
   return (
     <>
       <Navigation/>
+      <NotesForm />
+      <Notes_list notes={notes} />
+
       </>
   );
 }

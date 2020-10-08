@@ -1,12 +1,12 @@
 import React from "react";
-import {Todo} from "./todo";
+import {Note} from "./note";
 
-export function ToDoList(props){
-    const{note}=props;
+export function Notes_list(props){
+    const{notes}=props;
     return <>
         <ul>
-            {note.map(t=> (
-                <Todo/>
+            {notes.map(t=> (
+                <Note key={t.title} note={t}/>
             ))}
         </ul>
         </>

@@ -1,6 +1,6 @@
 import React from "react";
 
-export function Todo(){
+export function Note(){
 
     return <>
         </>
