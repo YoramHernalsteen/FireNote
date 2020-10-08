@@ -2,14 +2,14 @@ import React, {useState} from "react";
 import styled from "@emotion/styled";
 import uuid from "react-uuid";
 const NoteForm = styled.form`
-  width: 25%;
-  margin-left:10%;
+  width: 350px;
+  margin-left: 10%;
   display:${(props)=>props.open? "block": "none"};
   
 `;
 
 const StyledH2 = styled.button`
-  margin-top: 10%;
+  margin-top: 7em;
   margin-left: 10%;
   padding: 1em;
   background-color: #07004d;

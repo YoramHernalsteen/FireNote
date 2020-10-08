@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {NOTES_DATA} from "./notes_data";
+import {NOTES_DATA} from "./data/notes_data";
 import firebase from "firebase";
 import './App.css';
 import {Navigation} from "./components/navigation";

@@ -20,8 +20,8 @@ const StyledLinkNav = styled.a`
     font-size: 2em;
 `;
 const StyledLogo = styled.img`
-    max-height: 100px;
-    max-width: 200px;
+    max-height: 2em;
+    max-width: 4em;
 `;
 
 export function Navigation(){
