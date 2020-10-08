@@ -6,7 +6,7 @@ export function Notes_list(props){
     return <>
         <ul>
             {notes.map(t=> (
-                <Note key={t.title} note={t}/>
+                <Note key={t.id} note={t}/>
             ))}
         </ul>
         </>

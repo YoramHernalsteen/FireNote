@@ -7,10 +7,14 @@ import {Notes_list} from "./components/notes_list";
 
 function App() {
     const[notes, setNotes] = useState([]);
+    function addNote(note){
+        setNotes([note, ...notes]);
+
+    }
   return (
     <>
       <Navigation/>
-      <NotesForm />
+      <NotesForm addNote={addNote} />
       <Notes_list notes={notes} />
 
       </>
