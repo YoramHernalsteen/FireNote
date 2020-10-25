@@ -2,6 +2,7 @@ import React from "react";
 import styled from "@emotion/styled";
 import {Note} from "./note";
 import Table from "react-bootstrap/Table";
+import {useNoteContext} from "../context";
 
 
 const H1Notes = styled.h1`
@@ -36,13 +37,15 @@ function NoteTableHeader(props){
                     <th>Description</th>
                     <th>Category</th>
                     <th>Status</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
                 </tr>
             </thead>
     </>
 
 }
-function NoteTableBody(props){
-    const{notes}=props;
+function NoteTableBody(){
+    const{notes}=useNoteContext();
     return <>
         <tbody>
         {notes.map(n=> (<Note key={n.id} note={n} />))}

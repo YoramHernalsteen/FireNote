@@ -4,13 +4,14 @@ import uuid from "react-uuid";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import 'bootstrap/dist/css/bootstrap.min.css';
+import {useNoteContext} from "../context";
 
 
 const StyledH1 = styled.h1`
   margin-top: 5em;
 `;
-export function NotesForm(props){
-    const{addNote}=props;
+export function NotesForm(){
+    const{addNote}=useNoteContext();
     const[note, setNote]= useState({
         id: "",
         title: "",
