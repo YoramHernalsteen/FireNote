@@ -1,10 +1,11 @@
 import React, {useState} from 'react';
 import {NOTES_DATA} from "./data/notes_data";
-import firebase from "firebase";
+import {HashRouter, Switch,Route} from "react-router-dom"
+import Container from "react-bootstrap/Container";
 import './App.css';
-import {Navigation} from "./components/navigation";
+import {Footer, Navigation} from "./components/navigation";
 import {NotesForm} from "./components/notesForm";
-import {Notes_list} from "./components/notes_list";
+import {NotesList} from "./components/notes_list";
 
 function App() {
     const[notes, setNotes] = useState(NOTES_DATA);
@@ -14,10 +15,20 @@ function App() {
     }
   return (
     <>
-      <Navigation/>
-      <NotesForm addNote={addNote} />
-      <Notes_list notes={notes} />
+      <HashRouter basename={"/"}>
+          <Container>
+              <Navigation/>
+              <Switch>
+                  <Route exact path={"/"}>
+                      <NotesList notes={notes} />
+                  </Route>
+                  <Route exact path={"/notes"}>
+                      <NotesForm addNote={addNote} />
+                  </Route>
+              </Switch>
+          </Container>
 
+      </HashRouter>
       </>
   );
 }

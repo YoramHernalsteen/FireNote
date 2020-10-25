@@ -1,60 +1,35 @@
 import React, {useState} from "react";
 import styled from "@emotion/styled";
 import uuid from "react-uuid";
-const NoteForm = styled.form`
-  width: 350px;
-  margin-left: 10%;
-  display:${(props)=>props.open? "block": "none"};
-  
-`;
+import Form from "react-bootstrap/Form";
+import Button from "react-bootstrap/Button";
+import 'bootstrap/dist/css/bootstrap.min.css';
 
-const StyledH2 = styled.button`
-  margin-top: 9em;
-  margin-left: 10%;
-  padding: 1em;
-  background-color: #07004d;
-  color: white;
-  font-size: 1.25em;
-  border-radius: 8px;
-`;
 
-const FormGroup = styled.div `
-  display: flex;
-  flex-direction: column;
+const StyledH1 = styled.h1`
+  margin-top: 5em;
 `;
-
-const ButtonStyled = styled.button`
-    margin-top: 1em;
-    padding: 1em;
-    background-color: #07004d;
-    color: white;
-    font-size: 1.25em;
-    border-radius: 8px;
-`;
-
-const LabelStyled = styled.label`
-  margin-top: 1em ;
-  font-size: 1.25em;
-`;
-
-const TextAreaStyled = styled.textarea`
-    height: 100px;
-`;
-
 export function NotesForm(props){
     const{addNote}=props;
     const[note, setNote]= useState({
         id: "",
         title: "",
-        text: ""
+        text: "",
+        category: "",
+        status: ""
     });
-    const[open, setOpen] = useState(false);
     function handleTitleChange(e){
         setNote({...note, title:e.target.value});
 
     }
     function handleTextChange(e){
         setNote({...note, text: e.target.value});
+    }
+    function handleCategoryChange(e){
+        setNote({...note,category: e.target.value});
+    }
+    function handleStatusChange(e){
+        setNote({...note,status: e.target.value});
     }
     function handleSubmit(e){
         e.preventDefault();
@@ -65,18 +40,37 @@ export function NotesForm(props){
 
     }
     return <>
-        <StyledH2 onClick={()=>setOpen(true)}>Create new note</StyledH2>
-        <NoteForm onSubmit={handleSubmit} open={open}>
-            <FormGroup>
-                <LabelStyled htmlFor="notesform_title">TITLE</LabelStyled>
-                <input type="text" id="notesform_title" name="notesform_title" onChange={handleTitleChange} value={note.title}/>
-            </FormGroup>
-            <FormGroup>
-                <LabelStyled htmlFor="notesform_note">NOTE</LabelStyled>
-                <TextAreaStyled id="notesform_note" name="notesform_note" onChange={handleTextChange} value={note.text} />
-            </FormGroup>
-            <ButtonStyled type="submit" onClick={()=>setOpen(false)}>Create note</ButtonStyled>
-        </NoteForm>
-
-        </>
+        <StyledH1>NOTE CREATOR</StyledH1>
+        <Form onSubmit={handleSubmit}>
+            <Form.Group>
+                <Form.Label>Title:</Form.Label>
+                <Form.Control type="text" placeholder="Title" id="notesform_title" name="notesform_title" onChange={handleTitleChange} value={note.title} />
+            </Form.Group>
+            <Form.Group>
+                <Form.Label>Text:</Form.Label>
+                <Form.Control as="textarea" placeholder="Text" rows={3} id="notesform_note" name="notesform_note" onChange={handleTextChange} value={note.text}/>
+            </Form.Group>
+            <Form.Group>
+                <Form.Label>Category:</Form.Label>
+                <Form.Control as="select" id="notesform_category" name="notesform_category" onChange={handleCategoryChange} value={note.category}>
+                    <option>Work</option>
+                    <option>Groceries</option>
+                    <option>Home</option>
+                    <option>Family</option>
+                    <option>Random</option>
+                </Form.Control>
+            </Form.Group>
+            <Form.Group>
+                <Form.Label>Status:</Form.Label>
+                <Form.Control as="select" id="notesform_status" name="notesform_status" onChange={handleStatusChange} value={note.status}>
+                    <option>To do</option>
+                    <option>In progress</option>
+                    <option>Done</option>
+                </Form.Control>
+            </Form.Group>
+            <Button variant="primary" type="submit">
+                Submit
+            </Button>
+        </Form>
+    </>
 }

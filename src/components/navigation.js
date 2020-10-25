@@ -1,33 +1,25 @@
 import React from "react";
 import styled from "@emotion/styled";
-import logo from "../images/logo_note.png"
+import {Link} from "react-router-dom"
+import Navbar from "react-bootstrap/Navbar";
 
-const StyledNav = styled.div`
-    height: 100px;
-    background-color: limegreen;
-    color: white;
-    padding: 0.8em 0;
-    position: fixed;
-    top: 0;
-    z-index: 30;
-    width: 100%;
-`;
 
-const StyledLinkNav = styled.a`
-    color: white;
-    text-decoration: none;
-    padding: 3em;
-    font-size: 2em;
-`;
-const StyledLogo = styled.img`
-    max-height: 2em;
-    max-width: 4em;
+const NavLinkStyled= styled(Link)`
+   color: white;
+   text-decoration: none;
 `;
 
 export function Navigation(){
     return <>
-            <StyledNav>
-                <StyledLinkNav href="#"><StyledLogo src={logo} alt=""/></StyledLinkNav>
-                </StyledNav>
+        <Navbar bg="dark" variant="dark" fixed="top">
+            <Navbar.Brand>
+                <Link className="navbar-brand" to="/">
+                    NOTE
+                </Link>
+            </Navbar.Brand>
+            <NavLinkStyled  to="/notes">
+                NOTE CREATOR
+            </NavLinkStyled>
+        </Navbar>
         </>
 }
