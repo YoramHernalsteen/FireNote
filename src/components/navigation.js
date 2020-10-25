@@ -7,6 +7,9 @@ import Navbar from "react-bootstrap/Navbar";
 const NavLinkStyled= styled(Link)`
    color: white;
    text-decoration: none;
+   & :hover{
+    color:white;
+    text-decoration: none;
 `;
 
 export function Navigation(){
