@@ -4,7 +4,7 @@ import Container from "react-bootstrap/Container";
 import './App.css';
 import {Navigation} from "./components/navigation";
 import {NotesForm} from "./components/notesForm";
-import {NotesList} from "./components/notes_list";
+import {NotesDisplay} from "./components/notes_list";
 import {NoteContextProvider} from "./context";
 
 function App() {
@@ -16,7 +16,7 @@ function App() {
                         <Navigation/>
                         <Switch>
                             <Route exact path={"/"}>
-                                <NotesList/>
+                                <NotesDisplay/>
                             </Route>
                             <Route exact path={"/notes"}>
                                 <NotesForm />

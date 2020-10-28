@@ -1,8 +1,8 @@
 import React from "react";
 import styled from "@emotion/styled";
-import {Note} from "./note";
-import Table from "react-bootstrap/Table";
+import { NoteI} from "./note";
 import {useNoteContext} from "../context";
+import CardDeck from "react-bootstrap/CardDeck";
 
 
 const H1Notes = styled.h1`
@@ -11,46 +11,47 @@ const H1Notes = styled.h1`
 `;
 
 
-export function NotesList(props){
-    const{notes}=props;
-    return <>
-        <H1Notes>NOTES:</H1Notes>
-        <NoteTable notes={notes}/>
-        </>
-}
 
-function NoteTable(props){
-    const{notes}=props;
+
+const CardDeckStyled = styled(CardDeck)`
+  @media (min-width: 36em) {
+        -webkit-column-count: 2;
+        -moz-column-count: 2;
+        column-count: 2;
+    }
+
+
+  @media (min-width: 48em) {
+        -webkit-column-count: 2;
+        -moz-column-count: 2;
+        column-count: 2;
+    }
+
+  @media (min-width: 62em) {
+        -webkit-column-count: 3;
+        -moz-column-count: 3;
+        column-count: 3;
+    }
+
+  @media (min-width: 71.25em) {
+        -webkit-column-count: 3;
+        -moz-column-count: 3;
+        column-count: 3;
+    }
+`
+
+export function NotesDisplay(){
     return <>
-        <Table striped bordered>
-            <NoteTableHeader/>
-            <NoteTableBody notes={notes}/>
-        </Table>
+        <H1Notes>NOTES: </H1Notes>
+        <NotesCards/>
     </>
-};
-
-function NoteTableHeader(props){
-    return <>
-            <thead>
-                <tr>
-                    <th>Title</th>
-                    <th>Description</th>
-                    <th>Category</th>
-                    <th>Status</th>
-                    <th>Edit</th>
-                    <th>Delete</th>
-                </tr>
-            </thead>
-    </>
-
 }
-function NoteTableBody(){
-    const{notes}=useNoteContext();
+function NotesCards(){
+    const {notes} = useNoteContext();
     return <>
-        <tbody>
-        {notes.map(n=> (<Note key={n.id} note={n} />))}
-        </tbody>
-
+        <CardDeckStyled>
+            {notes.map((n)=>(<NoteI key={n.id} note={n}/>))}
+        </CardDeckStyled>
     </>
 }
 
