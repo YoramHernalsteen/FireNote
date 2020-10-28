@@ -8,7 +8,11 @@ export function NoteContextProvider(props){
         let newNotes = [...notes, note];
         setNotes(newNotes);
     }, [notes, setNotes]);
-    const api = useMemo(()=>({notes, addNote}), [notes,addNote]);
+    const deleteNote = useCallback((note)=>{
+        let newNotes = notes.filter((n)=>note.id !== n.id);
+        setNotes(newNotes);
+    },[notes, setNotes]);
+    const api = useMemo(()=>({notes, addNote, deleteNote}), [notes,addNote, deleteNote]);
     return  <NoteContext.Provider value={api}>
         {props.children}
     </NoteContext.Provider>

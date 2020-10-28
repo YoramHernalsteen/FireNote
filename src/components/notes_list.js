@@ -41,8 +41,10 @@ const CardDeckStyled = styled(CardDeck)`
 `
 
 export function NotesDisplay(){
+    const{notes} = useNoteContext();
     return <>
         <H1Notes>NOTES: </H1Notes>
+        {!notes.length ? "No notes to display. Why don't you make a note?" : null}
         <NotesCards/>
     </>
 }
