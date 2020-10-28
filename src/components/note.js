@@ -5,7 +5,7 @@ import {MdEdit} from "react-icons/md";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
-import {useNoteContext} from "../context";
+import {useActiveNoteContext, useNoteContext} from "../context";
 
 const SpanLeft = styled.span`
   float: left;
@@ -21,6 +21,7 @@ export function NoteI(props){
     const[show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
+    const{setActiveNote} = useActiveNoteContext();
     return <>
         <Card>
             <Card.Header>
@@ -36,14 +37,21 @@ export function NoteI(props){
                 </Card.Text>
             </Card.Body>
             <Card.Footer>
-                <Styledp><SpanLeft><Button><MdEdit/></Button></SpanLeft><SpanRight><Button onClick={handleShow}><MdDelete/></Button></SpanRight></Styledp>
+                <Styledp>
+                    <SpanLeft><Button onClick={()=>{
+                        setActiveNote(note);
+                        setShow(true);
+                    }}><MdEdit/></Button></SpanLeft>
+                    <SpanRight><Button onClick={handleShow}><MdDelete/></Button></SpanRight>
+                </Styledp>
             </Card.Footer>
         </Card>
-        <ConfirmationMessage show={show} handleClose={handleClose} note={note}/>
+        <ConfirmationMessageDelete show={show} handleClose={handleClose} note={note}/>
+        <ConfirmationMessageEdit show={show} handleClose={handleClose} note={note}/>
     </>
 }
 
-function ConfirmationMessage(props){
+function ConfirmationMessageDelete(props){
     const{show,handleClose, note} = props;
     const{deleteNote} = useNoteContext();
     return <>
@@ -62,4 +70,24 @@ function ConfirmationMessage(props){
             </Modal.Footer>
         </Modal>
         </>
+}
+function ConfirmationMessageEdit(props){
+    const{show, handleClose, note} = props;
+    const{activeNote} = useActiveNoteContext();
+    return <>
+        <Modal show={show} onHide={handleClose}>
+            <Modal.Header closeButton>
+                <Modal.Title>Edit confirmation</Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+                You are about to edit the note {note.title}. The active note is {activeNote.title}
+            </Modal.Body>
+            <Modal.Footer>
+                <Styledp>
+                    <SpanLeft><Button onClick={handleClose}>Close</Button></SpanLeft>
+                    <SpanRight><Button>I am sure</Button></SpanRight>
+                </Styledp>
+            </Modal.Footer>
+        </Modal>
+    </>
 }

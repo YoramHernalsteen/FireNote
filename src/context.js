@@ -1,5 +1,6 @@
 import React, {createContext, useCallback, useContext, useMemo, useState} from "react";
 import {NOTES_DATA} from "./data/notes_data";
+import uuid from "react-uuid";
 
 
 // Deze context dient voor het aanmaken, deleten en updaten van notes.
@@ -24,7 +25,7 @@ export const useNoteContext=()=>useContext(NoteContext);
 //Deze context wordt gebruikt om een note als active te beschouwen
 const ActiveNoteContext= createContext();
 export function ActiveNoteContextProvider(props){
-    const[activeNote, setActiveNote] = useState(null);
+    const[activeNote, setActiveNote] = useState({id:uuid(), title:"Note 2", text: "Om de form te sluiten, submit je de note", category:"Random", status:"NA"});
     const api = useMemo(()=>({
                 activeNote, setActiveNote
         }), [activeNote, setActiveNote]
