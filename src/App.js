@@ -5,27 +5,28 @@ import './App.css';
 import {Navigation} from "./components/navigation";
 import {NotesForm} from "./components/notesForm";
 import {NotesDisplay} from "./components/notes_list";
-import {NoteContextProvider} from "./context";
+import {ActiveNoteContextProvider, NoteContextProvider} from "./context";
 
 function App() {
     return (
         <>
-            <NoteContextProvider>
-                <HashRouter basename={"/"}>
-                    <Container>
-                        <Navigation/>
-                        <Switch>
-                            <Route exact path={"/"}>
-                                <NotesDisplay/>
-                            </Route>
-                            <Route exact path={"/notes"}>
-                                <NotesForm />
-                            </Route>
-                        </Switch>
-                    </Container>
-
-                </HashRouter>
-            </NoteContextProvider>
+            <ActiveNoteContextProvider>
+                <NoteContextProvider>
+                    <HashRouter basename={"/"}>
+                        <Container>
+                            <Navigation/>
+                            <Switch>
+                                <Route exact path={"/"}>
+                                    <NotesDisplay/>
+                                </Route>
+                                <Route exact path={"/notes"}>
+                                    <NotesForm/>
+                                </Route>
+                            </Switch>
+                        </Container>
+                    </HashRouter>
+                </NoteContextProvider>
+            </ActiveNoteContextProvider>
         </>
     );
 }

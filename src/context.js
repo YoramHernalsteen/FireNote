@@ -1,6 +1,8 @@
 import React, {createContext, useCallback, useContext, useMemo, useState} from "react";
 import {NOTES_DATA} from "./data/notes_data";
 
+
+// Deze context dient voor het aanmaken, deleten en updaten van notes.
 const NoteContext = createContext();
 export function NoteContextProvider(props){
     const[notes, setNotes] = useState(NOTES_DATA);
@@ -19,3 +21,16 @@ export function NoteContextProvider(props){
 };
 export const useNoteContext=()=>useContext(NoteContext);
 
+//Deze context wordt gebruikt om een note als active te beschouwen
+const ActiveNoteContext= createContext();
+export function ActiveNoteContextProvider(props){
+    const[activeNote, setActiveNote] = useState(null);
+    const api = useMemo(()=>({
+                activeNote, setActiveNote
+        }), [activeNote, setActiveNote]
+    );
+    return  <ActiveNoteContext.Provider value={api}>
+        {props.children}
+    </ActiveNoteContext.Provider>
+};
+export const useActiveNoteContext = () =>useContext(ActiveNoteContext);
