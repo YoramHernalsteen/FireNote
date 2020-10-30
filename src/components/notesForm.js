@@ -12,7 +12,7 @@ const StyledH1 = styled.h1`
   margin-top: 5em;
 `;
 
-function NotesFormTitle(props){
+export function NotesFormTitle(props){
     const {setNote, note} = props;
     function handleTitleChange(e){
         setNote({...note, title:e.target.value});
@@ -26,7 +26,7 @@ function NotesFormTitle(props){
     </>
 }
 
-function NotesFormText(props){
+export function NotesFormText(props){
     const{setNote, note} = props;
     function handleTextChange(e){
         setNote({...note, text: e.target.value});
@@ -38,7 +38,7 @@ function NotesFormText(props){
         </Form.Group>
     </>
 }
-function NotesFormCategories(props){
+export function NotesFormCategories(props){
     const{setNote, note} = props;
     function handleCategoryChange(e){
         setNote({...note,category: e.target.value});
@@ -56,7 +56,7 @@ function NotesFormCategories(props){
         </Form.Group>
     </>
 }
-function NotesFormStatus(props){
+export function NotesFormStatus(props){
     const {setNote, note} = props;
     function handleStatusChange(e){
         setNote({...note,status: e.target.value});
@@ -87,7 +87,8 @@ export function NotesForm(){
 
     function handleSubmit(e){
         e.preventDefault();
-        addNote({...note, id: uuid()});
+        setNote({...note, id: uuid()});
+        addNote(note);
         console.log(note.title);
         setNote({...note, title:"", text: "" });
         history.push("/");

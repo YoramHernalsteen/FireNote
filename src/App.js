@@ -6,6 +6,7 @@ import {Navigation} from "./components/navigation";
 import {NotesForm} from "./components/notesForm";
 import {NotesDisplay} from "./components/notes_list";
 import {ActiveNoteContextProvider, NoteContextProvider} from "./context";
+import {EditForm} from "./components/edit_notes_form";
 
 function App() {
     return (
@@ -21,6 +22,9 @@ function App() {
                                 </Route>
                                 <Route exact path={"/notes"}>
                                     <NotesForm/>
+                                </Route>
+                                <Route exact path={"/editor"} >
+                                    <EditForm/>
                                 </Route>
                             </Switch>
                         </Container>

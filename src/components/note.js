@@ -5,6 +5,7 @@ import {MdEdit} from "react-icons/md";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
+import {Link} from "react-router-dom";
 import {useActiveNoteContext, useNoteContext} from "../context";
 
 const SpanLeft = styled.span`
@@ -18,10 +19,13 @@ width: 100%;
 `;
 export function NoteI(props){
     const{note}= props;
-    const[show, setShow] = useState(false);
-    const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
-    const{setActiveNote} = useActiveNoteContext();
+    const[showDelete, setShowDelete] = useState(false);
+    const handleCloseDelete = () => setShowDelete(false);
+    const handleShowDelete = () => setShowDelete(true);
+    const [showEdit, setShowEdit] = useState(false);
+    const handleCloseEdit = () => setShowEdit(false);
+    const handleOpenEdit = () => setShowEdit(true);
+    const {setActiveNote} = useActiveNoteContext();
     return <>
         <Card>
             <Card.Header>
@@ -38,16 +42,17 @@ export function NoteI(props){
             </Card.Body>
             <Card.Footer>
                 <Styledp>
+                    <p>{note.id}</p>
                     <SpanLeft><Button onClick={()=>{
                         setActiveNote(note);
-                        setShow(true);
+                        setShowEdit(true);
                     }}><MdEdit/></Button></SpanLeft>
-                    <SpanRight><Button onClick={handleShow}><MdDelete/></Button></SpanRight>
+                    <SpanRight><Button onClick={handleShowDelete}><MdDelete/></Button></SpanRight>
                 </Styledp>
             </Card.Footer>
         </Card>
-        <ConfirmationMessageDelete show={show} handleClose={handleClose} note={note}/>
-        <ConfirmationMessageEdit show={show} handleClose={handleClose} note={note}/>
+        <ConfirmationMessageDelete show={showDelete} handleClose={handleCloseDelete} note={note}/>
+        <ConfirmationMessageEdit show={showEdit} handleClose={handleCloseEdit} note={note}/>
     </>
 }
 
@@ -65,7 +70,7 @@ function ConfirmationMessageDelete(props){
             <Modal.Footer>
                 <Styledp>
                     <SpanLeft><Button onClick={handleClose}>Close</Button></SpanLeft>
-                    <SpanRight><Button onClick={()=>deleteNote(note)}>I am sure</Button></SpanRight>
+                    <SpanRight><Button onClick={()=>deleteNote(note.id)}>Yes, I am sure!</Button></SpanRight>
                 </Styledp>
             </Modal.Footer>
         </Modal>
@@ -73,19 +78,18 @@ function ConfirmationMessageDelete(props){
 }
 function ConfirmationMessageEdit(props){
     const{show, handleClose, note} = props;
-    const{activeNote} = useActiveNoteContext();
     return <>
         <Modal show={show} onHide={handleClose}>
             <Modal.Header closeButton>
                 <Modal.Title>Edit confirmation</Modal.Title>
             </Modal.Header>
             <Modal.Body>
-                You are about to edit the note {note.title}. The active note is {activeNote.title}
+                You are about to edit the note {note.title}.
             </Modal.Body>
             <Modal.Footer>
                 <Styledp>
                     <SpanLeft><Button onClick={handleClose}>Close</Button></SpanLeft>
-                    <SpanRight><Button>I am sure</Button></SpanRight>
+                    <SpanRight><Link to="/editor">Yes, I am sure!</Link></SpanRight>
                 </Styledp>
             </Modal.Footer>
         </Modal>
