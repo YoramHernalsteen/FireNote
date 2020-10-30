@@ -16,7 +16,7 @@ const StyledH1 = styled.h1`
 export function EditForm(){
     const{activeNote}=useActiveNoteContext();
     const {addNote} = useNoteContext();
-    const[note, setNote]= useState({id:uuid(), title:activeNote.title, text: activeNote.text, category:activeNote.category, status:activeNote.status});
+    const[note, setNote]= useState(activeNote);
     let history = useHistory();
     function handleSubmit(e){
         e.preventDefault();
