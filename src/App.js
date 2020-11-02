@@ -42,7 +42,7 @@ function ProvidedApp(){
                             <Route exact path={"/editor"}>
                                 {userName !== null ?
                                 <EditForm/> : <Redirect to={"/login"}/> }
-                            </Route> 
+                            </Route>
                         <Route exact path={"/login"}>
                             <Login/>
                         </Route>
