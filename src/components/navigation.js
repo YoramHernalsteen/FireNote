@@ -5,6 +5,7 @@ import Navbar from "react-bootstrap/Navbar";
 
 
 const NavLinkStyled= styled(Link)`
+   margin-right: 1em;
    color: white;
    text-decoration: none;
    & :hover{
@@ -22,6 +23,9 @@ export function Navigation(){
             </Navbar.Brand>
             <NavLinkStyled id="creator"  to="/creator">
                 NOTE CREATOR
+            </NavLinkStyled>
+            <NavLinkStyled id="login"  to="/login">
+                LOGIN
             </NavLinkStyled>
         </Navbar>
         </>
