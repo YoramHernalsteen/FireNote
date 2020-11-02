@@ -5,7 +5,7 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useHistory } from "react-router-dom";
-import {useNoteContext} from "../context";
+import {useNoteContext} from "../contexts/notecontext";
 
 
 const StyledH1 = styled.h1`

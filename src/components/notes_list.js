@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "@emotion/styled";
 import { NoteI} from "./note";
-import {useNoteContext} from "../context";
+import {useNoteContext} from "../contexts/notecontext";
 import CardDeck from "react-bootstrap/CardDeck";
 
 

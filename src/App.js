@@ -5,7 +5,9 @@ import './App.css';
 import {Navigation} from "./components/navigation";
 import {NotesForm} from "./components/notesForm";
 import {NotesDisplay} from "./components/notes_list";
-import {ActiveNoteContextProvider, NoteContextProvider, UserNameContextProvider, useUserNameContext} from "./context";
+import {ActiveNoteContextProvider}from "./contexts/active_notecontext";
+import {NoteContextProvider} from "./contexts/notecontext";
+import {UserNameContextProvider, useUserNameContext} from "./contexts/username_context";
 import {EditForm} from "./components/edit_notes_form";
 import {Login} from "./components/login";
 

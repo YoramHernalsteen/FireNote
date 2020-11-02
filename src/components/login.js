@@ -1,7 +1,7 @@
 import React from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
-import {useUserNameContext} from "../context";
+import {useUserNameContext} from "../contexts/username_context";
 import {useHistory} from "react-router-dom";
 import styled from "@emotion/styled";
 
