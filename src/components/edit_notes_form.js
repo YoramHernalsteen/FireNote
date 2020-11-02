@@ -6,7 +6,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { useHistory } from "react-router-dom";
 import {useActiveNoteContext, useNoteContext} from "../context";
 import {NotesFormCategories, NotesFormStatus, NotesFormText, NotesFormTitle} from "./notesForm";
-import uuid from "react-uuid";
 
 
 const StyledH1 = styled.h1`
@@ -30,7 +29,7 @@ return <>
         <NotesFormText setNote={setNote} note={note}/>
         <NotesFormCategories setNote={setNote} note={note}/>
         <NotesFormStatus setNote={setNote} note={note}/>
-        <Button variant="primary" type="submit">
+        <Button id="submit" variant="primary" type="submit">
             Submit
         </Button>
     </Form>

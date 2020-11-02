@@ -68,6 +68,7 @@ export function NotesFormStatus(props){
                 <option>To do</option>
                 <option>In progress</option>
                 <option>Done</option>
+                <option>NA</option>
             </Form.Control>
         </Form.Group>
         </>
@@ -87,8 +88,7 @@ export function NotesForm(){
 
     function handleSubmit(e){
         e.preventDefault();
-        setNote({...note, id: uuid()});
-        addNote(note);
+        addNote({...note, id: uuid()});
         console.log(note.title);
         setNote({...note, title:"", text: "" });
         history.push("/");
@@ -101,7 +101,7 @@ export function NotesForm(){
            <NotesFormText setNote={setNote} note={note}/>
            <NotesFormCategories setNote={setNote} note={note}/>
            <NotesFormStatus setNote={setNote} note={note}/>
-           <Button variant="primary" type="submit">
+           <Button id="submit" variant="primary" type="submit">
                 Submit
            </Button>
         </Form>

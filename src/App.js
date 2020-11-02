@@ -20,7 +20,7 @@ function App() {
                                 <Route exact path={"/"}>
                                     <NotesDisplay/>
                                 </Route>
-                                <Route exact path={"/notes"}>
+                                <Route exact path={"/creator"}>
                                     <NotesForm/>
                                 </Route>
                                 <Route exact path={"/editor"} >

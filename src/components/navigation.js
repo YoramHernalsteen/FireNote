@@ -20,7 +20,7 @@ export function Navigation(){
                     NOTE
                 </Link>
             </Navbar.Brand>
-            <NavLinkStyled  to="/notes">
+            <NavLinkStyled id="creator"  to="/creator">
                 NOTE CREATOR
             </NavLinkStyled>
         </Navbar>

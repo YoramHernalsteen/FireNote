@@ -17,6 +17,12 @@ const SpanRight = styled.span`
 const Styledp = styled.p`
 width: 100%;
 `;
+
+const StyledCardHeader = styled(Card.Header)`
+  background-color: ${(props) => props.status === 'NA' ? 'white' :
+                        props.status === 'To do' ? 'red' : 
+                            props.status === 'In progress' ? 'yellow' : 'green'};
+`;
 export function NoteI(props){
     const{note}= props;
     const[showDelete, setShowDelete] = useState(false);
@@ -24,23 +30,22 @@ export function NoteI(props){
     const handleShowDelete = () => setShowDelete(true);
     const [showEdit, setShowEdit] = useState(false);
     const handleCloseEdit = () => setShowEdit(false);
-    const handleOpenEdit = () => setShowEdit(true);
     const {setActiveNote} = useActiveNoteContext();
     return <>
-        <Card>
-            <Card.Header>
+        <Card id={note.title}>
+            <StyledCardHeader status={note.status}>
                 <SpanLeft>{note.category}</SpanLeft>
                 <SpanRight>{note.status}</SpanRight>
-            </Card.Header>
-            <Card.Body>
-                <Card.Title>
+            </StyledCardHeader>
+            <Card.Body id="body">
+                <Card.Title id="title">
                     {note.title}
                 </Card.Title>
                 <Card.Text>
                     {note.text}
                 </Card.Text>
             </Card.Body>
-            <Card.Footer>
+            <Card.Footer id="footer">
                 <Styledp>
                     <p>{note.id}</p>
                     <SpanLeft><Button onClick={()=>{
@@ -60,7 +65,7 @@ function ConfirmationMessageDelete(props){
     const{show,handleClose, note} = props;
     const{deleteNote} = useNoteContext();
     return <>
-        <Modal show={show} onHide={handleClose}>
+        <Modal show={show} onHide={handleClose} id="delete">
             <Modal.Header closeButton>
                 <Modal.Title>Delete confirmation</Modal.Title>
             </Modal.Header>
@@ -79,17 +84,17 @@ function ConfirmationMessageDelete(props){
 function ConfirmationMessageEdit(props){
     const{show, handleClose, note} = props;
     return <>
-        <Modal show={show} onHide={handleClose}>
+        <Modal show={show} onHide={handleClose} id="edit">
             <Modal.Header closeButton>
                 <Modal.Title>Edit confirmation</Modal.Title>
             </Modal.Header>
             <Modal.Body>
                 You are about to edit the note {note.title}.
             </Modal.Body>
-            <Modal.Footer>
+            <Modal.Footer id="footerModal">
                 <Styledp>
                     <SpanLeft><Button onClick={handleClose}>Close</Button></SpanLeft>
-                    <SpanRight><Link to="/editor">Yes, I am sure!</Link></SpanRight>
+                    <SpanRight id="spanRight" ><Link to="/editor">Yes, I am sure!</Link></SpanRight>
                 </Styledp>
             </Modal.Footer>
         </Modal>
