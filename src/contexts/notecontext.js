@@ -21,6 +21,7 @@ export function NoteContextProvider(props){
         }
         setNotes(newNotes);
     }, [notes, setNotes]);
+    
     useEffect(()=>{
         const fetchData = async () =>{
             const data = await FirestoreService.getNotes();
