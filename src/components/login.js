@@ -19,11 +19,11 @@ export function Login(){
     }
     return <>
         <StyledH1>LOGIN: </StyledH1>
-        {userName !== null? <p>You are now logged in as {userName}!</p> : <p>Log in to use the application!</p>}
+        {userName !== null? <p id="login_message">You are now logged in as {userName}!</p> : <p>Log in to use the application!</p>}
         <p>You can always change your display name here.</p>
         <Form onSubmit={handleSubmit}>
             <UserNameForm setUser={setUserName}/>
-            <Button id="submit" variant="primary" type="submit">
+            <Button id="submit_name" variant="primary" type="submit">
                 Submit
             </Button>
         </Form>
