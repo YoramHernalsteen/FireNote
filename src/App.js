@@ -1,4 +1,6 @@
 import React from 'react';
+import * as firebase from "firebase/app";
+import "firebase/firestore";
 import {HashRouter, Switch, Route, Redirect} from "react-router-dom"
 import Container from "react-bootstrap/Container";
 import './App.css';
@@ -10,6 +12,7 @@ import {NoteContextProvider} from "./contexts/notecontext";
 import {UserNameContextProvider, useUserNameContext} from "./contexts/username_context";
 import {EditForm} from "./components/edit_notes_form";
 import {Login} from "./components/login";
+import {STATUS_NEW} from "./utilities/firestore";
 
 
 function App() {
