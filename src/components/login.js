@@ -9,21 +9,24 @@ const StyledH1 = styled.h1`
   margin-top: 5em;
 
 `;
-export function Login(){
+export function Login() {
     let history = useHistory();
-    const {userName,setUserName} = useUserNameContext();
+    const {userName, setUserName} = useUserNameContext();
     console.log(userName + " :username")
-    function handleSubmit(e){
+
+    function handleSubmit(e) {
         localStorage.setItem("user", userName);
         history.push("/");
     }
+
     return <>
         <StyledH1>LOGIN: </StyledH1>
-        {userName !== null? <p>You are now logged in as {userName}!</p> : <p>Log in to use the application!</p>}
+        <p id="login_message"> {userName !== null ? "You are now logged in as " + {userName}+ "!" :
+            "Log in to use the application!"} </p>
         <p>You can always change your display name here.</p>
         <Form onSubmit={handleSubmit}>
             <UserNameForm setUser={setUserName}/>
-            <Button id="submit" variant="primary" type="submit">
+            <Button id="submit_name" variant="primary" type="submit">
                 Submit
             </Button>
         </Form>
