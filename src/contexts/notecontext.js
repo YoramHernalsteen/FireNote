@@ -1,4 +1,6 @@
 import React, {createContext, useCallback, useContext, useEffect, useMemo, useState} from "react";
+import * as firebase from "firebase/app";
+import "firebase/firestore";
 import * as FirestoreService from "../utilities/firestore";
 //import {NOTES_DATA} from "../data/notes_data";
 
@@ -8,27 +10,31 @@ const NoteContext = createContext();
 export function NoteContextProvider(props){
     const[notes, setNotes] = useState([]);
     const deleteNote = useCallback((id)=>{
-        let newNotes = notes.filter((n)=>id !== n.id);
-        setNotes(newNotes);
-    },[notes, setNotes]);
+        const db = firebase.firestore();
+        db.collection('notes').doc(id).delete();
+    },[]);
     const addNote = useCallback((note) =>{
-        let newNotes;
-        if(notes.some(noteCheck => noteCheck.id === note.id )){
-            newNotes = notes.filter((n)=> n.id !== note.id);
-            newNotes = [...newNotes, note];
-        }else{
-            newNotes = [...notes, note];
-        }
-        setNotes(newNotes);
-    }, [notes, setNotes]);
+        const db = firebase.firestore();
+        db.collection('notes').doc(note.id).set({id: note.id, title: note.title, text : note.text, status:note.status, category :note.category});
+
+
+
+    }, []);
     
     useEffect(()=>{
         const fetchData = async () =>{
-            const data = await FirestoreService.getNotes();
-            setNotes(data.docs.map(doc=>doc.data()));
+            const db = firebase.firestore().collection('notes');
+            db.onSnapshot((querySnapshot)=>{
+                const newNotes = [];
+                querySnapshot.forEach((doc)=>{
+                    newNotes.push(doc.data());
+                })
+                setNotes(newNotes);
+            })
+
         }
         fetchData();
-    }, [setNotes])
+    }, [setNotes]);
     const api = useMemo(()=>({notes, addNote, deleteNote}), [notes,addNote, deleteNote]);
     return  <NoteContext.Provider value={api}>
         {props.children}

@@ -14,8 +14,3 @@ else
 
 
 export const STATUS_NEW= "new";
-
-export function getNotes(){
-    if(!db) return new Promise ((resolve, reject) => reject ("No database"));
-    return db.collection("notes").get();
-}
