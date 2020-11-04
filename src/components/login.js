@@ -21,7 +21,7 @@ export function Login() {
 
     return <>
         <StyledH1>LOGIN: </StyledH1>
-        <p id="login_message"> {userName !== null ? "You are now logged in as " + {userName}+ "!" :
+        <p id="login_message"> {userName !== null ? `You are now logged in as ${userName} !` :
             "Log in to use the application!"} </p>
         <p>You can always change your display name here.</p>
         <Form onSubmit={handleSubmit}>

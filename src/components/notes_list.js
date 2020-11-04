@@ -4,6 +4,7 @@ import { NoteI} from "./note";
 import {useNoteContext} from "../contexts/notecontext";
 import CardDeck from "react-bootstrap/CardDeck";
 import firebase from "firebase";
+import {useUserNameContext} from "../contexts/username_context";
 
 
 const H1Notes = styled.h1`
@@ -43,9 +44,12 @@ const CardDeckStyled = styled(CardDeck)`
 
 export function NotesDisplay(){
     const{notes} = useNoteContext();
+    const{userName} = useUserNameContext();
     console.log(notes);
     return <>
         <H1Notes>NOTES: </H1Notes>
+        <p id="login_message_succes"> {userName !== null ? `You are now logged in as ${userName}!` :
+            "Log in to use the application!"} </p>
         {!notes.length ? "No notes to display. Why don't you make a note?" : null}
         <NotesCards/>
     </>

@@ -17,7 +17,7 @@ export function Navigation(){
     return <>
         <Navbar bg="dark" variant="dark" fixed="top">
             <Navbar.Brand>
-                <Link className="navbar-brand" to="/">
+                <Link id="home_link" className="navbar-brand" to="/">
                     NOTE
                 </Link>
             </Navbar.Brand>
