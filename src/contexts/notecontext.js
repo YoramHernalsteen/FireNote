@@ -2,11 +2,12 @@ import React, {createContext, useCallback, useContext, useEffect, useMemo, useSt
 import * as firebase from "firebase/app";
 import "firebase/firestore";
 import * as FirestoreService from "../utilities/firestore";
-//import {NOTES_DATA} from "../data/notes_data";
 
 
 //Deze context dient voor het aanmaken, deleten en updaten van notes.
+FirestoreService.firestoreCheck();
 const NoteContext = createContext();
+
 export function NoteContextProvider(props){
     const[notes, setNotes] = useState([]);
     const deleteNote = useCallback((id)=>{

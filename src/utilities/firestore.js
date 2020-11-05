@@ -14,3 +14,7 @@ else
 
 
 export const STATUS_NEW= "new";
+
+export function firestoreCheck(){
+    console.log('firestore works');
+}

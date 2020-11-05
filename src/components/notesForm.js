@@ -1,7 +1,6 @@
 import React, {useState} from "react";
 import styled from "@emotion/styled";
 import uuid from "react-uuid";
-import * as firebase from "firebase/app";
 import "firebase/firestore";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";

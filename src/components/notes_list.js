@@ -1,9 +1,8 @@
-import React, {useEffect} from "react";
+import React from "react";
 import styled from "@emotion/styled";
 import { NoteI} from "./note";
 import {useNoteContext} from "../contexts/notecontext";
 import CardDeck from "react-bootstrap/CardDeck";
-import firebase from "firebase";
 import {useUserNameContext} from "../contexts/username_context";
 
 
