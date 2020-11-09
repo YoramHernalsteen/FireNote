@@ -2,31 +2,33 @@ import React from "react";
 import styled from "@emotion/styled";
 import {Link} from "react-router-dom"
 import Navbar from "react-bootstrap/Navbar";
+import logo from "../images/fireLogo.png";
+import {Rightnav} from "./rightnav";
+import {Burger} from "./burger";
 
+
+const NavbarStyled = styled(Navbar)`
+  background-color: ${({theme}) =>theme.colors.favoriteRed};
+  padding: 1em;
+`;
 
 const NavLinkStyled= styled(Link)`
    margin-right: 1em;
    color: white;
-   text-decoration: none;
-   & :hover{
+   &:hover{
     color:white;
     text-decoration: none;
 `;
 
 export function Navigation(){
     return <>
-        <Navbar bg="dark" variant="dark" fixed="top">
+        <NavbarStyled  fixed="top" expand="lg">
             <Navbar.Brand>
-                <Link id="home_link" className="navbar-brand" to="/">
-                    NOTE
-                </Link>
+                <NavLinkStyled id="home_link"  to="/">
+                    <img src={logo} alt="" height="75"width="150" />
+                </NavLinkStyled>
             </Navbar.Brand>
-            <NavLinkStyled id="creator"  to="/creator">
-                NOTE CREATOR
-            </NavLinkStyled>
-            <NavLinkStyled id="login"  to="/login">
-                LOGIN
-            </NavLinkStyled>
-        </Navbar>
+            <Burger/>
+        </NavbarStyled>
         </>
 }

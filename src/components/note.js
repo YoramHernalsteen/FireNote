@@ -19,8 +19,13 @@ const Styledp = styled.p`
 width: 100%;
 `;
 const StyledCard = styled(Card)`
-   min-width: 33%;
-   margin: 3em;
+   margin-bottom: 3em;
+    @media (min-width: 1000px) {
+   min-width: 45%;
+  }
+  @media (max-width: 999px) {
+    min-width: 95%;
+  }
 `;
 
 const StyledCardHeader = styled(Card.Header)`
@@ -52,7 +57,6 @@ export function NoteI(props){
             </Card.Body>
             <Card.Footer id="footer">
                 <Styledp>
-                    <p>{note.id}</p>
                     <SpanLeft><Button onClick={()=>{
                         setActiveNote(note);
                         setShowEdit(true);
