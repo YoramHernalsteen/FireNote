@@ -75,6 +75,22 @@ export function NotesFormStatus(props){
         </>
 
 }
+function validate(note){
+    const errors = [];
+    if(note.title.length === 0){
+        errors.push("Name can't be empty!");
+    }
+    if(note.text.length === 0){
+        errors.push("Name can't be empty!");
+    }
+    if(note.status.length === 0){
+        errors.push("Status can't be empty!");
+    }
+    if(note.category.length === 0){
+        errors.push("Category can't be empty!");
+    }
+    return errors;
+}
 export function NotesForm(){
     let history = useHistory();
     const{addNote}=useNoteContext();
@@ -85,10 +101,16 @@ export function NotesForm(){
         category: "",
         status: ""
     });
+    const [errors, setErrors] = useState([]);
 
 
     function handleSubmit(e){
         e.preventDefault();
+        const error = validate(note);
+        if(error.length> 0){
+            setErrors(error);
+            return;
+        }
         addNote({...note, id: uuid()});
         console.log(note.title);
         setNote({...note, title:"", text: "" });
@@ -98,6 +120,9 @@ export function NotesForm(){
     return <>
         <StyledH1>NOTE CREATOR</StyledH1>
         <Form onSubmit={handleSubmit}>
+            {errors.map(error =>(
+                <p key={error}>Error: {error}</p>
+            ))}
            <NotesFormTitle setNote={setNote} note={note}/>
            <NotesFormText setNote={setNote} note={note}/>
            <NotesFormCategories setNote={setNote} note={note}/>

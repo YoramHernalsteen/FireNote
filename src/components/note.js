@@ -18,6 +18,10 @@ const SpanRight = styled.span`
 const Styledp = styled.p`
 width: 100%;
 `;
+const StyledCard = styled(Card)`
+   min-width: 33%;
+   margin: 3em;
+`;
 
 const StyledCardHeader = styled(Card.Header)`
   background-color: ${(props) => props.status === 'NA' ? 'white' :
@@ -33,7 +37,7 @@ export function NoteI(props){
     const handleCloseEdit = () => setShowEdit(false);
     const {setActiveNote} = useActiveNoteContext();
     return <>
-        <Card id={note.title}>
+        <StyledCard id={note.title}>
             <StyledCardHeader status={note.status}>
                 <SpanLeft>{note.category}</SpanLeft>
                 <SpanRight>{note.status}</SpanRight>
@@ -56,7 +60,7 @@ export function NoteI(props){
                     <SpanRight><Button onClick={handleShowDelete}><MdDelete/></Button></SpanRight>
                 </Styledp>
             </Card.Footer>
-        </Card>
+        </StyledCard>
         <ConfirmationMessageDelete show={showDelete} handleClose={handleCloseDelete} note={note}/>
         <ConfirmationMessageEdit show={showEdit} handleClose={handleCloseEdit} note={note}/>
     </>

@@ -15,6 +15,10 @@ const H1Notes = styled.h1`
 
 
 const CardDeckStyled = styled(CardDeck)`
+  display: flex;
+  justify-content: flex-start;
+  flex-flow: row wrap; 
+  align-items: stretch;
   @media (min-width: 36em) {
         -webkit-column-count: 2;
         -moz-column-count: 2;
