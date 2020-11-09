@@ -12,7 +12,7 @@ const UlStyled = styled.ul`
    list-style: none;
    display: flex;
    flex-flow: column nowrap;
-   background-color: ${({theme}) =>theme.colors.primaryDark};;
+   background-color: ${({theme}) =>theme.colors.secondaryDark};;
    position: fixed;
    transform: ${({ open }) => open ? 'translateX(0)' : 'translateX(100%)'};
    top: 0;

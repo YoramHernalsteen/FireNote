@@ -7,6 +7,7 @@ import { useHistory } from "react-router-dom";
 import {useActiveNoteContext} from "../contexts/active_notecontext";
 import {useNoteContext} from "../contexts/notecontext";
 import {NotesFormCategories, NotesFormStatus, NotesFormText, NotesFormTitle} from "./notesForm";
+import {useUserNameContext} from "../contexts/username_context";
 
 
 const StyledH1 = styled.h1`
@@ -17,10 +18,11 @@ export function EditForm(){
     const{activeNote}=useActiveNoteContext();
     const {addNote} = useNoteContext();
     const[note, setNote]= useState(activeNote);
+    const {userName} = useUserNameContext();
     let history = useHistory();
     function handleSubmit(e){
         e.preventDefault();
-        addNote(note);
+        addNote({...note, user: userName});
         history.push("/");
     }
 return <>

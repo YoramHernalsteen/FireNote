@@ -19,7 +19,7 @@ const Styledp = styled.p`
 width: 100%;
 `;
 const StyledCard = styled(Card)`
-   margin-bottom: 3em;
+   margin-top: 3em;
     @media (min-width: 1000px) {
    min-width: 45%;
   }
@@ -30,8 +30,12 @@ const StyledCard = styled(Card)`
 
 const StyledCardHeader = styled(Card.Header)`
   background-color: ${(props) => props.status === 'NA' ? 'white' :
-                        props.status === 'To do' ? 'red' : 
-                            props.status === 'In progress' ? 'yellow' : 'green'};
+                        props.status === 'To do' ? '#ff4019' : 
+                            props.status === 'In progress' ? '#1899f5' : 
+                                props.status === 'On hold' ? '#f5d018' : '#1ed47c'};
+`;
+const StyledUser = styled.p`
+  text-align: center;
 `;
 export function NoteI(props){
     const{note}= props;
@@ -57,6 +61,7 @@ export function NoteI(props){
             </Card.Body>
             <Card.Footer id="footer">
                 <Styledp>
+                    <StyledUser>Made by {note.user}</StyledUser>
                     <SpanLeft><Button onClick={()=>{
                         setActiveNote(note);
                         setShowEdit(true);

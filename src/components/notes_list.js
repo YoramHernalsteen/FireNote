@@ -11,40 +11,6 @@ const H1Notes = styled.h1`
     margin-top: 5em;
 `;
 
-
-
-
-const CardDeckStyled = styled(CardDeck)`
-  display: flex;
-  justify-content: flex-start;
-  flex-flow: row wrap; 
-  align-items: stretch;
-  @media (min-width: 36em) {
-        -webkit-column-count: 2;
-        -moz-column-count: 2;
-        column-count: 2;
-    }
-
-
-  @media (min-width: 48em) {
-        -webkit-column-count: 2;
-        -moz-column-count: 2;
-        column-count: 2;
-    }
-
-  @media (min-width: 62em) {
-        -webkit-column-count: 3;
-        -moz-column-count: 3;
-        column-count: 3;
-    }
-
-  @media (min-width: 71.25em) {
-        -webkit-column-count: 3;
-        -moz-column-count: 3;
-        column-count: 3;
-    }
-`
-
 export function NotesDisplay(){
     const{notes} = useNoteContext();
     const{userName} = useUserNameContext();
@@ -60,9 +26,9 @@ export function NotesDisplay(){
 function NotesCards(){
     const {notes} = useNoteContext();
     return <>
-        <CardDeckStyled>
+        <CardDeck>
             {notes.map((n)=>(<NoteI key={n.id} note={n}/>))}
-        </CardDeckStyled>
+        </CardDeck>
     </>
 }
 

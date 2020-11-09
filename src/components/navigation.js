@@ -3,7 +3,6 @@ import styled from "@emotion/styled";
 import {Link} from "react-router-dom"
 import Navbar from "react-bootstrap/Navbar";
 import logo from "../images/fireLogo.png";
-import {Rightnav} from "./rightnav";
 import {Burger} from "./burger";
 
 

@@ -7,6 +7,7 @@ import Button from "react-bootstrap/Button";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useHistory } from "react-router-dom";
 import {useNoteContext} from "../contexts/notecontext";
+import {useUserNameContext} from "../contexts/username_context";
 
 
 const StyledH1 = styled.h1`
@@ -68,6 +69,7 @@ export function NotesFormStatus(props){
             <Form.Control as="select" id="notesform_status" name="notesform_status" onChange={handleStatusChange} value={note.status}>
                 <option>To do</option>
                 <option>In progress</option>
+                <option>On hold</option>
                 <option>Done</option>
                 <option>NA</option>
             </Form.Control>
@@ -91,6 +93,14 @@ function validate(note){
     }
     return errors;
 }
+const Error = styled.p`
+
+`;
+const ErrorSpan = styled.span`
+ font-size: 1.5em;
+ color:${({theme}) =>theme.colors.favoriteRed};
+ 
+`;
 export function NotesForm(){
     let history = useHistory();
     const{addNote}=useNoteContext();
@@ -99,8 +109,10 @@ export function NotesForm(){
         title: "",
         text: "",
         category: "",
-        status: ""
+        status: "",
+        user: ""
     });
+    const {userName} = useUserNameContext();
     const [errors, setErrors] = useState([]);
 
 
@@ -111,7 +123,7 @@ export function NotesForm(){
             setErrors(error);
             return;
         }
-        addNote({...note, id: uuid()});
+        addNote({...note, id: uuid(), user:userName});
         console.log(note.title);
         setNote({...note, title:"", text: "" });
         history.push("/");
@@ -121,7 +133,7 @@ export function NotesForm(){
         <StyledH1>NOTE CREATOR</StyledH1>
         <Form onSubmit={handleSubmit}>
             {errors.map(error =>(
-                <p key={error}>Error: {error}</p>
+                <Error key={error}><ErrorSpan>Error</ErrorSpan>: {error}</Error>
             ))}
            <NotesFormTitle setNote={setNote} note={note}/>
            <NotesFormText setNote={setNote} note={note}/>
