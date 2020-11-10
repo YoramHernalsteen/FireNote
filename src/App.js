@@ -10,51 +10,52 @@ import {NotesForm} from "./components/notesForm";
 import {NotesDisplay} from "./components/notes_list";
 import {ActiveNoteContextProvider} from "./contexts/active_notecontext";
 import {NoteContextProvider} from "./contexts/notecontext";
-import {UserNameContextProvider, useUserNameContext} from "./contexts/username_context";
 import {EditForm} from "./components/edit_notes_form";
-import {Login} from "./components/login";
+import {AuthProvider} from "./contexts/user_context";
+import UserLogin from "./components/user_login";
+import Registration from "./components/user_registration";
+import { useAuth } from "./contexts/user_context"
 
 
 function App() {
     return (
         <>
             <ThemeProvider theme={theme}>
-                <UserNameContextProvider>
-                    <ActiveNoteContextProvider>
-                        <NoteContextProvider>
-                            <ProvidedApp/>
-                        </NoteContextProvider>
-                    </ActiveNoteContextProvider>
-                </UserNameContextProvider>
+                <AuthProvider>
+                        <ActiveNoteContextProvider>
+                            <NoteContextProvider>
+                                <ProvidedApp/>
+                            </NoteContextProvider>
+                        </ActiveNoteContextProvider>
+                </AuthProvider>
             </ThemeProvider>
         </>
     );
 }
 
 function ProvidedApp() {
-    const {userName} = useUserNameContext();
+    const { currentUser } = useAuth()
     return (<>
             <HashRouter basename={"/"}>
                 <Container>
                     <Navigation/>
                     <Switch>
                         <Route exact path={"/"}>
-                            {userName !== null ?
+                            {currentUser !== null ?
                                 <NotesDisplay/> : <Redirect to={"/login"}/>
                             }
                         </Route>
                         <Route exact path={"/creator"}>
-                            {userName !== null ?
+                            {currentUser !== null ?
                                 <NotesForm/> : <Redirect to={"/login"}/>}
                         </Route>
 
                         <Route exact path={"/editor"}>
-                            {userName !== null ?
+                            {currentUser !== null ?
                                 <EditForm/> : <Redirect to={"/login"}/>}
                         </Route>
-                        <Route exact path={"/login"}>
-                            <Login/>
-                        </Route>
+                        <Route exact path="/login" component={UserLogin}/>
+                        <Route exact path="/signup" component={Registration}/>
                     </Switch>
                 </Container>
             </HashRouter>

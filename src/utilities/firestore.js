@@ -1,5 +1,6 @@
 import * as firebase from "firebase/app";
 import "firebase/firestore";
+import "firebase/auth"
 const firebaseConfig = {
     apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
     authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
@@ -15,6 +16,7 @@ else
 
 export const STATUS_NEW= "new";
 
+export const auth = firebase.auth()
 export function firestoreCheck(){
     console.log('firestore works');
 }

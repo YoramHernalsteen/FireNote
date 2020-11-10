@@ -4,8 +4,8 @@ import {Link} from "react-router-dom"
 import {NoteI} from "./note";
 import {useNoteContext} from "../contexts/notecontext";
 import CardDeck from "react-bootstrap/CardDeck";
-import {useUserNameContext} from "../contexts/username_context";
 import {BsFileEarmarkPlus} from "react-icons/bs";
+import {useAuth} from "../contexts/user_context";
 
 
 const H1Notes = styled.h1`
@@ -26,11 +26,11 @@ const BigIconNew = styled(BsFileEarmarkPlus)`
 
 export function NotesDisplay() {
     const {notes} = useNoteContext();
-    const {userName} = useUserNameContext();
+    const { currentUser } = useAuth()
     console.log(notes);
     return <>
         <H1Notes>NOTES: </H1Notes>
-        <p id="login_message_succes"> {userName !== null ? `You are now logged in as ${userName}!` :
+        <p id="login_message_succes"> {currentUser !== null ? `You are now logged in as ${currentUser.email}!` :
             "Log in to use the application!"} </p>
         <p>{!notes.length ? "No notes to display. Why don't you make a note?" : null}<CreatorLink to="/creator">
             <BigIconNew/></CreatorLink></p>

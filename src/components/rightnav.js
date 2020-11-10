@@ -1,6 +1,8 @@
 import React from "react";
 import styled from "@emotion/styled";
 import {Link} from "react-router-dom"
+import {Logout} from "./logout";
+
 const NavLinkStyled= styled(Link)`
    margin-right: 1em;
    color: white;
@@ -38,6 +40,11 @@ export function Rightnav(props){
             <li>
                 <NavLinkStyled id="login"  to="/login" onClick={()=>setOpen(false)}>
                     LOGIN
+                </NavLinkStyled>
+            </li>
+            <li>
+                <NavLinkStyled>
+                    <Logout/>
                 </NavLinkStyled>
             </li>
         </UlStyled>

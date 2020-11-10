@@ -2,6 +2,7 @@ import React, {createContext, useCallback, useContext, useEffect, useMemo, useSt
 import * as firebase from "firebase/app";
 import "firebase/firestore";
 import * as FirestoreService from "../utilities/firestore";
+import {useAuth} from "./user_context";
 
 
 //Deze context dient voor het aanmaken, deleten en updaten van notes.
@@ -10,6 +11,7 @@ const NoteContext = createContext();
 
 export function NoteContextProvider(props){
     const[notes, setNotes] = useState([]);
+    const { currentUser } = useAuth();
     const deleteNote = useCallback((id)=>{
         const db = firebase.firestore();
         db.collection('notes').doc(id).delete();
@@ -21,21 +23,21 @@ export function NoteContextProvider(props){
 
 
     }, []);
-    
     useEffect(()=>{
         const fetchData = async () =>{
-            const db = firebase.firestore().collection('notes');
-            db.onSnapshot((querySnapshot)=>{
-                const newNotes = [];
-                querySnapshot.forEach((doc)=>{
-                    newNotes.push(doc.data());
+            if(currentUser){
+                const db =firebase.firestore().collection('notes').where('user', '==', currentUser.email);
+                db.onSnapshot((querySnapshot)=>{
+                    const newNotes = [];
+                    querySnapshot.forEach((doc)=>{
+                        newNotes.push(doc.data());
+                    })
+                    setNotes(newNotes);
                 })
-                setNotes(newNotes);
-            })
-
+            }
         }
         fetchData();
-    }, [setNotes]);
+    }, [setNotes, currentUser]);
     const api = useMemo(()=>({notes, addNote, deleteNote}), [notes,addNote, deleteNote]);
     return  <NoteContext.Provider value={api}>
         {props.children}

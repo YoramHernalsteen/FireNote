@@ -7,7 +7,7 @@ import Button from "react-bootstrap/Button";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useHistory } from "react-router-dom";
 import {useNoteContext} from "../contexts/notecontext";
-import {useUserNameContext} from "../contexts/username_context";
+import {useAuth} from "../contexts/user_context";
 
 
 const StyledH1 = styled.h1`
@@ -112,7 +112,7 @@ export function NotesForm(){
         status: "To do",
         user: ""
     });
-    const {userName} = useUserNameContext();
+    const { currentUser } = useAuth();
     const [errors, setErrors] = useState([]);
 
 
@@ -123,7 +123,8 @@ export function NotesForm(){
             setErrors(error);
             return;
         }
-        addNote({...note, id: uuid(), user:userName});
+        console.log(currentUser.email)
+        addNote({...note, id: uuid(), user:currentUser.email});
         console.log(note.title);
         setNote({...note, title:"", text: "" });
         history.push("/");
