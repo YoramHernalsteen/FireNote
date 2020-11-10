@@ -1,26 +1,26 @@
 {
   "files": {
-    "main.css": "/note/static/css/main.e49dfba8.chunk.css",
-    "main.js": "/note/static/js/main.8ae9b651.chunk.js",
-    "main.js.map": "/note/static/js/main.8ae9b651.chunk.js.map",
-    "runtime-main.js": "/note/static/js/runtime-main.95b022d4.js",
-    "runtime-main.js.map": "/note/static/js/runtime-main.95b022d4.js.map",
-    "static/css/2.2a86faee.chunk.css": "/note/static/css/2.2a86faee.chunk.css",
-    "static/js/2.2d5f4096.chunk.js": "/note/static/js/2.2d5f4096.chunk.js",
-    "static/js/2.2d5f4096.chunk.js.map": "/note/static/js/2.2d5f4096.chunk.js.map",
-    "index.html": "/note/index.html",
-    "precache-manifest.f94ef21fcdfb252220e6b20e0346ed2b.js": "/note/precache-manifest.f94ef21fcdfb252220e6b20e0346ed2b.js",
-    "service-worker.js": "/note/service-worker.js",
-    "static/css/2.2a86faee.chunk.css.map": "/note/static/css/2.2a86faee.chunk.css.map",
-    "static/css/main.e49dfba8.chunk.css.map": "/note/static/css/main.e49dfba8.chunk.css.map",
-    "static/js/2.2d5f4096.chunk.js.LICENSE.txt": "/note/static/js/2.2d5f4096.chunk.js.LICENSE.txt",
-    "static/media/fireLogo.png": "/note/static/media/fireLogo.3a51098a.png"
+    "main.css": "/FireNote/static/css/main.16192d80.chunk.css",
+    "main.js": "/FireNote/static/js/main.2d6fb712.chunk.js",
+    "main.js.map": "/FireNote/static/js/main.2d6fb712.chunk.js.map",
+    "runtime-main.js": "/FireNote/static/js/runtime-main.f323a41c.js",
+    "runtime-main.js.map": "/FireNote/static/js/runtime-main.f323a41c.js.map",
+    "static/css/2.2a86faee.chunk.css": "/FireNote/static/css/2.2a86faee.chunk.css",
+    "static/js/2.39d8d106.chunk.js": "/FireNote/static/js/2.39d8d106.chunk.js",
+    "static/js/2.39d8d106.chunk.js.map": "/FireNote/static/js/2.39d8d106.chunk.js.map",
+    "index.html": "/FireNote/index.html",
+    "precache-manifest.0d05441320f34ab7bcada213e9866d10.js": "/FireNote/precache-manifest.0d05441320f34ab7bcada213e9866d10.js",
+    "service-worker.js": "/FireNote/service-worker.js",
+    "static/css/2.2a86faee.chunk.css.map": "/FireNote/static/css/2.2a86faee.chunk.css.map",
+    "static/css/main.16192d80.chunk.css.map": "/FireNote/static/css/main.16192d80.chunk.css.map",
+    "static/js/2.39d8d106.chunk.js.LICENSE.txt": "/FireNote/static/js/2.39d8d106.chunk.js.LICENSE.txt",
+    "static/media/fireLogo.png": "/FireNote/static/media/fireLogo.3a51098a.png"
   },
   "entrypoints": [
-    "static/js/runtime-main.95b022d4.js",
+    "static/js/runtime-main.f323a41c.js",
     "static/css/2.2a86faee.chunk.css",
-    "static/js/2.2d5f4096.chunk.js",
-    "static/css/main.e49dfba8.chunk.css",
-    "static/js/main.8ae9b651.chunk.js"
+    "static/js/2.39d8d106.chunk.js",
+    "static/css/main.16192d80.chunk.css",
+    "static/js/main.2d6fb712.chunk.js"
   ]
 }
