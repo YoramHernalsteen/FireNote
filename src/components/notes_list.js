@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "@emotion/styled";
+import {Link} from "react-router-dom"
 import { NoteI} from "./note";
 import {useNoteContext} from "../contexts/notecontext";
 import CardDeck from "react-bootstrap/CardDeck";
@@ -20,6 +21,7 @@ export function NotesDisplay(){
         <p id="login_message_succes"> {userName !== null ? `You are now logged in as ${userName}!` :
             "Log in to use the application!"} </p>
         {!notes.length ? "No notes to display. Why don't you make a note?" : null}
+        <Link to="/creator">CREATE NEW NOTE</Link>
         <NotesCards/>
     </>
 }

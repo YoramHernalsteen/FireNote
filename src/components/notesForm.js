@@ -80,10 +80,10 @@ export function NotesFormStatus(props){
 function validate(note){
     const errors = [];
     if(note.title.length === 0){
-        errors.push("Name can't be empty!");
+        errors.push("Title can't be empty!");
     }
     if(note.text.length === 0){
-        errors.push("Name can't be empty!");
+        errors.push("Text can't be empty!");
     }
     if(note.status.length === 0){
         errors.push("Status can't be empty!");
@@ -108,8 +108,8 @@ export function NotesForm(){
         id: "",
         title: "",
         text: "",
-        category: "",
-        status: "",
+        category: "Work",
+        status: "To do",
         user: ""
     });
     const {userName} = useUserNameContext();
