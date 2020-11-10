@@ -1,6 +1,6 @@
 {
-  "homepage": "https://yoramhernalsteen.github.io/note",
-  "name": "note",
+  "homepage": "https://yoramhernalsteen.github.io/FireNote",
+  "name": "FireNote",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
