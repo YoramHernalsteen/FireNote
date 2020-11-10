@@ -38,14 +38,7 @@ export function Rightnav(props){
                 </NavLinkStyled>
             </li>
             <li>
-                <NavLinkStyled id="login"  to="/login" onClick={()=>setOpen(false)}>
-                    LOGIN
-                </NavLinkStyled>
-            </li>
-            <li>
-                <NavLinkStyled>
-                    <Logout/>
-                </NavLinkStyled>
+                <Logout open={open} setOpen={setOpen}/>
             </li>
         </UlStyled>
 

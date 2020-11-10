@@ -1,39 +1,22 @@
-import React, { useContext, useState, useEffect } from "react"
+import React, {useContext, useState, useEffect, useMemo, useCallback} from "react"
 import {auth} from "../utilities/firestore"
 
-const AuthContext = React.createContext()
-
-export function useAuth() {
-    return useContext(AuthContext)
-}
-
+const AuthContext = React.createContext();
 export function AuthProvider({ children }) {
     const [currentUser, setCurrentUser] = useState()
     const [loading, setLoading] = useState(true)
 
-    function signup(email, password) {
-        return auth.createUserWithEmailAndPassword(email, password)
-    }
+    const signup= useCallback((email, password)=>{
+        return auth.createUserWithEmailAndPassword(email, password);
+    }, []);
 
-    function login(email, password) {
-        return auth.signInWithEmailAndPassword(email, password)
-    }
+    const login = useCallback((email, password)=>{
+        return auth.signInWithEmailAndPassword(email, password);
+    }, []);
 
-    function logout() {
+    const logout= useCallback(()=>{
         return auth.signOut()
-    }
-
-    function resetPassword(email) {
-        return auth.sendPasswordResetEmail(email)
-    }
-
-    function updateEmail(email) {
-        return currentUser.updateEmail(email)
-    }
-
-    function updatePassword(password) {
-        return currentUser.updatePassword(password)
-    }
+    }, []);
 
     useEffect(() => {
         const unsubscribe = auth.onAuthStateChanged(user => {
@@ -44,15 +27,7 @@ export function AuthProvider({ children }) {
         return unsubscribe
     }, [])
 
-    const value = {
-        currentUser,
-        login,
-        signup,
-        logout,
-        resetPassword,
-        updateEmail,
-        updatePassword
-    }
+    const value = useMemo(()=> ({currentUser, login, signup, logout}), [currentUser, login, signup, logout]);
 
     return (
         <AuthContext.Provider value={value}>
@@ -60,3 +35,4 @@ export function AuthProvider({ children }) {
         </AuthContext.Provider>
     )
 }
+export const useAuth =()=> useContext(AuthContext);

@@ -18,6 +18,16 @@ const SpanRight = styled.span`
 const Styledp = styled.p`
 width: 100%;
 `;
+
+const ButtonStyled = styled(Button)`
+   background-color: ${({theme}) =>theme.colors.secondaryDark};
+   color: white;
+   &:hover{
+    background-color:${({theme}) =>theme.colors.favoriteRed};
+    text-decoration: none;
+    color: white;
+    }
+`;
 const StyledCard = styled(Card)`
    margin-top: 3em;
     @media (min-width: 1000px) {
@@ -62,11 +72,11 @@ export function NoteI(props){
             <Card.Footer id="footer">
                 <Styledp>
                     <StyledUser>Made by {note.user}</StyledUser>
-                    <SpanLeft><Button onClick={()=>{
+                    <SpanLeft><ButtonStyled onClick={()=>{
                         setActiveNote(note);
                         setShowEdit(true);
-                    }}><MdEdit/></Button></SpanLeft>
-                    <SpanRight><Button onClick={handleShowDelete}><MdDelete/></Button></SpanRight>
+                    }}><MdEdit/></ButtonStyled></SpanLeft>
+                    <SpanRight><ButtonStyled onClick={handleShowDelete}><MdDelete/></ButtonStyled></SpanRight>
                 </Styledp>
             </Card.Footer>
         </StyledCard>
@@ -88,8 +98,8 @@ function ConfirmationMessageDelete(props){
             </Modal.Body>
             <Modal.Footer>
                 <Styledp>
-                    <SpanLeft><Button onClick={handleClose}>Close</Button></SpanLeft>
-                    <SpanRight><Button onClick={()=>deleteNote(note.id)}>Yes, I am sure!</Button></SpanRight>
+                    <SpanLeft><ButtonStyled onClick={handleClose}>Close</ButtonStyled></SpanLeft>
+                    <SpanRight><ButtonStyled onClick={()=>deleteNote(note.id)}>Yes, I am sure!</ButtonStyled></SpanRight>
                 </Styledp>
             </Modal.Footer>
         </Modal>
@@ -107,7 +117,7 @@ function ConfirmationMessageEdit(props){
             </Modal.Body>
             <Modal.Footer id="footerModal">
                 <Styledp>
-                    <SpanLeft><Button onClick={handleClose}>Close</Button></SpanLeft>
+                    <SpanLeft><ButtonStyled onClick={handleClose}>Close</ButtonStyled></SpanLeft>
                     <SpanRight id="spanRight" ><Link to="/editor">Yes, I am sure!</Link></SpanRight>
                 </Styledp>
             </Modal.Footer>

@@ -8,6 +8,23 @@ const StyledH1 = styled.h1`
   margin-top: 5em;
 
 `;
+const StyledButton = styled(Button)`
+   background-color: ${({theme}) =>theme.colors.secondaryDark};
+   color: white;
+   &:hover{
+    background-color:${({theme}) =>theme.colors.favoriteRed};
+    text-decoration: none;
+    color: white;
+    }
+`;
+const StyledLink=styled(Link)`
+   color: ${({theme}) =>theme.colors.favoriteRed};
+   text-decoration: none;
+   &:hover{
+    color:${({theme}) =>theme.colors.secondaryDark};
+    text-decoration: none;
+    }
+`;
 export default function UserLogin() {
     const emailRef = useRef()
     const passwordRef = useRef()
@@ -18,12 +35,11 @@ export default function UserLogin() {
 
     async function handleSubmit(e) {
         e.preventDefault()
-
         try {
-            setError("")
-            setLoading(true)
-            await login(emailRef.current.value, passwordRef.current.value)
-            history.push("/")
+            setError("");
+            setLoading(true);
+            await login(emailRef.current.value, passwordRef.current.value);
+            history.push("/");
         } catch {
             setError("Failed to log in")
         }
@@ -47,17 +63,14 @@ export default function UserLogin() {
                             <Form.Label>Password</Form.Label>
                             <Form.Control type="password" ref={passwordRef} required />
                         </Form.Group>
-                        <Button disabled={loading} className="w-100" type="submit">
+                        <StyledButton disabled={loading} className="w-100" type="submit">
                             Log In
-                        </Button>
+                        </StyledButton>
                     </Form>
-                    <div className="w-100 text-center mt-3">
-                        <Link to="/forgot-password">Forgot Password?</Link>
-                    </div>
                 </Card.Body>
             </Card>
             <div className="w-100 text-center mt-2">
-                Need an account? <Link to="/signup">Sign Up</Link>
+                Need an account? <StyledLink to="/signup">Sign Up</StyledLink>
             </div>
         </>
     )

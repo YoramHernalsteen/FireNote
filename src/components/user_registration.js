@@ -8,6 +8,23 @@ const StyledH1 = styled.h1`
   margin-top: 5em;
 
 `;
+const StyledButton = styled(Button)`
+   background-color: ${({theme}) =>theme.colors.secondaryDark};
+   color: white;
+   &:hover{
+    background-color:${({theme}) =>theme.colors.favoriteRed};
+    text-decoration: none;
+    color: white;
+    }
+`;
+const StyledLink=styled(Link)`
+   color: ${({theme}) =>theme.colors.favoriteRed};
+   text-decoration: none;
+   &:hover{
+    color:${({theme}) =>theme.colors.secondaryDark};
+    text-decoration: none;
+    }
+`;
 export default function Registration() {
     const emailRef = useRef()
     const passwordRef = useRef()
@@ -56,14 +73,14 @@ export default function Registration() {
                             <Form.Label>Password Confirmation</Form.Label>
                             <Form.Control type="password" ref={passwordConfirmRef} required />
                         </Form.Group>
-                        <Button disabled={loading} className="w-100" type="submit">
+                        <StyledButton disabled={loading} className="w-100" type="submit">
                             Sign Up
-                        </Button>
+                        </StyledButton>
                     </Form>
                 </Card.Body>
             </Card>
             <div className="w-100 text-center mt-2">
-                Already have an account? <Link to="/test">Log In</Link>
+                Already have an account? <StyledLink to="/login">Log In</StyledLink>
             </div>
         </>
     )
