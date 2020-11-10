@@ -32,7 +32,13 @@ const ButtonStyled = styled(Button)`
     text-decoration: none;
     color: white;
     }
-    
+`;
+const StyledLink = styled(Link)`
+  color: ${({theme}) =>theme.colors.secondaryDark};
+  text-decoration-line: underline;
+  &:hover{
+    color: ${({theme}) =>theme.colors.favoriteRed};
+  }
 `;
 const StyledCard = styled(Card)`
    margin-top: 3em;
@@ -124,7 +130,7 @@ function ConfirmationMessageEdit(props){
             <Modal.Footer id="footerModal">
                 <Styledp>
                     <SpanLeft><ButtonStyled onClick={handleClose}>Close</ButtonStyled></SpanLeft>
-                    <SpanRight id="spanRight" ><Link to="/editor">Yes, I am sure!</Link></SpanRight>
+                    <SpanRight id="spanRight" ><StyledLink to="/editor">Yes, I am sure!</StyledLink></SpanRight>
                 </Styledp>
             </Modal.Footer>
         </Modal>
