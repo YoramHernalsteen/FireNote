@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "6793b741b494a7b4ba77e9ea558b92d6",
+    "revision": "6005bfb631e0cd50bd8979515ee1b7be",
     "url": "/FireNote/index.html"
   },
   {
@@ -8,7 +8,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/FireNote/static/css/2.2a86faee.chunk.css"
   },
   {
-    "revision": "dccad9551442a9d4f443",
+    "revision": "51f582c8b5075f709d83",
     "url": "/FireNote/static/css/main.16192d80.chunk.css"
   },
   {
@@ -20,8 +20,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/FireNote/static/js/2.9699c00f.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "dccad9551442a9d4f443",
-    "url": "/FireNote/static/js/main.ce510e80.chunk.js"
+    "revision": "51f582c8b5075f709d83",
+    "url": "/FireNote/static/js/main.df541d58.chunk.js"
   },
   {
     "revision": "a86be93c94320cb7fd95",
