@@ -7,12 +7,13 @@ const NavLinkStyled= styled(Link)`
    &:hover{
     color:white;
     text-decoration: none;
+    }
 `;
 const UlStyled = styled.ul`
    list-style: none;
    display: flex;
    flex-flow: column nowrap;
-   background-color: ${({theme}) =>theme.colors.secondaryDark};;
+   background-color: ${({theme}) =>theme.colors.secondaryDark};
    position: fixed;
    transform: ${({ open }) => open ? 'translateX(0)' : 'translateX(100%)'};
    top: 0;
