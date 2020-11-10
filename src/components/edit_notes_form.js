@@ -12,7 +12,20 @@ import {NotesFormCategories, NotesFormStatus, NotesFormText, NotesFormTitle} fro
 const StyledH1 = styled.h1`
   margin-top: 5em;
 `;
-
+const ButtonStyled = styled(Button)`
+   background-color: ${({theme}) =>theme.colors.secondaryDark};
+   color: white;
+   &:hover{
+    background-color:${({theme}) =>theme.colors.favoriteRed};
+    text-decoration: none;
+    color: white;
+    }
+    &:focus{
+    background-color:${({theme}) =>theme.colors.secondaryDark};
+    text-decoration: none;
+    color: white;
+    }
+`;
 export function EditForm(){
     const{activeNote}=useActiveNoteContext();
     const {addNote} = useNoteContext();
@@ -30,9 +43,9 @@ return <>
         <NotesFormText setNote={setNote} note={note}/>
         <NotesFormCategories setNote={setNote} note={note}/>
         <NotesFormStatus setNote={setNote} note={note}/>
-        <Button id="submit" variant="primary" type="submit">
+        <ButtonStyled id="submit" variant="primary" type="submit">
             Submit
-        </Button>
+        </ButtonStyled>
     </Form>
 
 </>
