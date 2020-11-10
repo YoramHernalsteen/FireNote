@@ -27,6 +27,12 @@ const ButtonStyled = styled(Button)`
     text-decoration: none;
     color: white;
     }
+    &:focus{
+    background-color:${({theme}) =>theme.colors.secondaryDark};
+    text-decoration: none;
+    color: white;
+    }
+    
 `;
 const StyledCard = styled(Card)`
    margin-top: 3em;
