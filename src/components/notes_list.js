@@ -5,7 +5,6 @@ import {NoteI} from "./note";
 import {useNoteContext} from "../contexts/notecontext";
 import CardDeck from "react-bootstrap/CardDeck";
 import {BsFileEarmarkPlus} from "react-icons/bs";
-import {useAuth} from "../contexts/user_context";
 
 
 const H1Notes = styled.h1`
