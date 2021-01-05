@@ -26,7 +26,6 @@ const BigIconNew = styled(BsFileEarmarkPlus)`
 
 export function NotesDisplay() {
     const {notes} = useNoteContext();
-    const { currentUser } = useAuth()
     console.log(notes);
     return <>
         <H1Notes>NOTES: </H1Notes>
