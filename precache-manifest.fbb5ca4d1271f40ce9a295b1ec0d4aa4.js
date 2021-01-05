@@ -1,27 +1,27 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "6005bfb631e0cd50bd8979515ee1b7be",
+    "revision": "9de10bb19704449e775f19946390158a",
     "url": "/FireNote/index.html"
   },
   {
-    "revision": "a4c8cb5b89604468f9b2",
+    "revision": "7071ce68d7d56f803914",
     "url": "/FireNote/static/css/2.2a86faee.chunk.css"
   },
   {
-    "revision": "51f582c8b5075f709d83",
-    "url": "/FireNote/static/css/main.16192d80.chunk.css"
+    "revision": "5cd643ecdea0e28c5916",
+    "url": "/FireNote/static/css/main.e49dfba8.chunk.css"
   },
   {
-    "revision": "a4c8cb5b89604468f9b2",
-    "url": "/FireNote/static/js/2.9699c00f.chunk.js"
+    "revision": "7071ce68d7d56f803914",
+    "url": "/FireNote/static/js/2.95d0ced3.chunk.js"
   },
   {
     "revision": "da1ddcda7183b6313ab6bca1da290ddd",
-    "url": "/FireNote/static/js/2.9699c00f.chunk.js.LICENSE.txt"
+    "url": "/FireNote/static/js/2.95d0ced3.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "51f582c8b5075f709d83",
-    "url": "/FireNote/static/js/main.df541d58.chunk.js"
+    "revision": "5cd643ecdea0e28c5916",
+    "url": "/FireNote/static/js/main.c9e65319.chunk.js"
   },
   {
     "revision": "a86be93c94320cb7fd95",
