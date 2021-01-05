@@ -30,8 +30,6 @@ export function NotesDisplay() {
     console.log(notes);
     return <>
         <H1Notes>NOTES: </H1Notes>
-        <p id="login_message_succes"> {currentUser !== null ? `You are now logged in as ${currentUser.email}!` :
-            ""} </p>
         <p>{!notes.length ? "No notes to display. Why don't you make a note?" : null}<CreatorLink to="/creator">
             <BigIconNew/></CreatorLink></p>
         <NotesCards/>
