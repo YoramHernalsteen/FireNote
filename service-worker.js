@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/FireNote/precache-manifest.3ab41ef7b8c92123b652e1671374b783.js"
+  "/FireNote/precache-manifest.f5f7ff3a8b27798e882ff2883993bf7b.js"
 );
 
 self.addEventListener('message', (event) => {
