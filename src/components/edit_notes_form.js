@@ -6,7 +6,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { useHistory } from "react-router-dom";
 import {useActiveNoteContext} from "../contexts/active_notecontext";
 import {useNoteContext} from "../contexts/notecontext";
-import {NotesFormCategories, NotesFormStatus, NotesFormText, NotesFormTitle} from "./notesForm";
+import {NotesFormCategories, NotesFormDate, NotesFormStatus, NotesFormText, NotesFormTitle} from "./notesForm";
 
 
 const StyledH1 = styled.h1`
@@ -43,6 +43,7 @@ return <>
         <NotesFormText setNote={setNote} note={note}/>
         <NotesFormCategories setNote={setNote} note={note}/>
         <NotesFormStatus setNote={setNote} note={note}/>
+        <NotesFormDate setNote={setNote} note={note}/>
         <ButtonStyled id="submit" variant="primary" type="submit">
             Submit
         </ButtonStyled>
