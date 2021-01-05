@@ -83,7 +83,7 @@ export function NoteI(props){
             </Card.Body>
             <Card.Footer id="footer">
                 <Styledp>
-                    <StyledUser>Made by {note.user}</StyledUser>
+                    <StyledUser>{note.date!== "" ? `Due date: ${note.date}` : "No due date!" }</StyledUser>
                     <SpanLeft><ButtonStyled onClick={()=>{
                         setActiveNote(note);
                         setShowEdit(true);

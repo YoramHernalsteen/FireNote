@@ -91,6 +91,18 @@ export function NotesFormStatus(props){
         </>
 
 }
+export function NotesFormDate(props){
+    const{setNote, note} = props;
+    function handleDateChange(e){
+        setNote({...note,date: e.target.value});
+    }
+    return <>
+        <Form.Group>
+            <Form.Label>Date (optional)</Form.Label>
+            <Form.Control type="date" id="notesform_date" name="notesform_date" onChange={handleDateChange} value={note.date}/>
+        </Form.Group>
+    </>
+}
 function validate(note){
     const errors = [];
     if(note.title.length === 0){
@@ -124,7 +136,8 @@ export function NotesForm(){
         text: "",
         category: "Work",
         status: "To do",
-        user: ""
+        user: "",
+        date: ""
     });
     const { currentUser } = useAuth();
     const [errors, setErrors] = useState([]);
@@ -154,6 +167,7 @@ export function NotesForm(){
            <NotesFormText setNote={setNote} note={note}/>
            <NotesFormCategories setNote={setNote} note={note}/>
            <NotesFormStatus setNote={setNote} note={note}/>
+           <NotesFormDate setNote={setNote} note={note}/>
            <ButtonStyled id="submit" variant="primary" type="submit">
                 Submit
            </ButtonStyled>

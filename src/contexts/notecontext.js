@@ -18,7 +18,7 @@ export function NoteContextProvider(props){
     },[]);
     const addNote = useCallback((note) =>{
         const db = firebase.firestore();
-        db.collection('notes').doc(note.id).set({id: note.id, title: note.title, text : note.text, status:note.status, category :note.category, user: note.user});
+        db.collection('notes').doc(note.id).set({id: note.id, title: note.title, text : note.text, status:note.status, category :note.category, user: note.user, date:note.date});
 
 
 
