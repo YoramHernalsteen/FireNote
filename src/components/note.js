@@ -67,6 +67,19 @@ export function NoteI(props){
     const [showEdit, setShowEdit] = useState(false);
     const handleCloseEdit = () => setShowEdit(false);
     const {setActiveNote} = useActiveNoteContext();
+    function showDate(){
+        let dueDate = Date.parse(note.date);
+        let newDate = new Date(dueDate);
+        let day = newDate.getDate();
+        if (day < 10) {
+            day = "0" + day;
+        }
+        let month = (newDate.getMonth() + 1);
+        if (month < 10) {
+            month = "0" + month;
+        }
+        return day + "-" + month + "-" + newDate.getFullYear();
+    }
     return <>
         <StyledCard id={note.title}>
             <StyledCardHeader status={note.status}>
@@ -83,7 +96,7 @@ export function NoteI(props){
             </Card.Body>
             <Card.Footer id="footer">
                 <Styledp>
-                    <StyledUser>{note.date!== "" ? `Due date: ${note.date}` : "No due date!" }</StyledUser>
+                    <StyledUser>{note.date!== "" ? `Due date: ${showDate()}` : "No due date!" }</StyledUser>
                     <SpanLeft><ButtonStyled onClick={()=>{
                         setActiveNote(note);
                         setShowEdit(true);
