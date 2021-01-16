@@ -39,7 +39,8 @@ export function Rightnav(props){
     return <>
         <UlStyled open ={open}>
             <li>
-                <UserGreeting>Hi, {currentUser.email}</UserGreeting>
+                {currentUser !==null?<UserGreeting>Hi, {currentUser.email}</UserGreeting>:"" }
+
             </li>
             <li>
                 <NavLinkStyled id="creator"  to="/creator" onClick={()=>setOpen(false)}>
